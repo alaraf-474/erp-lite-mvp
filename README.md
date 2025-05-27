@@ -1,106 +1,115 @@
-# ERP Lite MVP
+# ⚙️ ERP System Backend (Spring Boot)
 
->  A minimal yet scalable ERP (Enterprise Resource Planning) backend application built with Spring Boot and PostgreSQL. Designed for rapid iteration, modular development, and production readiness.
-
----
-
-## Tech Stack
-
--  **Backend**: Java + Spring Boot  
--  **Database**: PostgreSQL  
--  **Deployment Ready**: GitHub, Railway (or Docker)
--  **Build Tool**: Maven
--  **Project Type**: Monolith MVP, expandable to microservices
+This is a modular backend for an **Enterprise Resource Planning (ERP)** system, built using **Java Spring Boot**. The project is designed for clean code, modular architecture, and RESTful API design.
 
 ---
 
-## 🔧 Project Structure
+## 📦 Modules
 
+- ✅ **User Module** – CRUD operations for managing users (Admins, Managers, Staff)
+- ⏳ Inventory Module – _Coming Soon_
+- ⏳ Finance Module – _Coming Soon_
+
+---
+
+## 🛠️ Tech Stack
+
+- Java 17
+- Spring Boot 3
+- PostgreSQL
+- Spring Data JPA
+- Spring Security (configured)
+- Maven
+- REST APIs
+
+---
+
+## 🔐 Authentication
+
+Spring Security is enabled by default. You’ll be prompted with a login page at:
 ```
 
-erp/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/yourcompany/erp/
-│   │   └── resources/
-│   │       └── application.properties
-│   └── test/
-├── pom.xml
-└── README.md
+[http://localhost:8080/api/users](http://localhost:8080/api/users)
 
+````
+
+> You can disable security temporarily from `SecurityConfig.java` if needed.
+
+---
+
+## 📡 API Endpoints (User Module)
+
+| Method | Endpoint            | Description           |
+|--------|---------------------|-----------------------|
+| GET    | `/api/users`        | Get all users         |
+| GET    | `/api/users/{id}`   | Get user by ID        |
+| POST   | `/api/users`        | Create new user       |
+| PUT    | `/api/users/{id}`   | Update existing user  |
+| DELETE | `/api/users/{id}`   | Delete a user         |
+
+---
+
+## 🧪 Testing the API
+
+You can test with:
+- **Postman**
+- **curl**
+- Or connect a React frontend later
+
+Example POST request:
+```json
+POST /api/users
+{
+  "username": "jdoe",
+  "fullName": "John Doe",
+  "password": "securepass",
+  "role": "MANAGER"
+}
 ````
 
 ---
 
-## ⚙️ Database Configuration
-
-Make sure PostgreSQL is installed and running locally.
-
-1. Create the database:
-
-```sql
-CREATE DATABASE erp;
-````
-
-2. `application.properties` config:
-
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/erp
-spring.datasource.username=postgres
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
-```
-
----
-
-##  Getting Started
-
-### Prerequisites
-
-* Java 17+
-* PostgreSQL
-* Maven
-* Git
-
-### Run Locally
+## 🚀 How to Run
 
 ```bash
-# Clone repo
-git clone https://github.com/alaraf-474/erp-lite-mvp.git
-cd erp-lite-mvp
+# 1. Clone the repo
+git clone https://github.com/yourusername/erp.git
 
-# Build & run
+# 2. Open in IDE (VS Code / IntelliJ)
+
+# 3. Create PostgreSQL DB (e.g. erp_db)
+
+# 4. Configure `application.properties`
+
+# 5. Run the app
 ./mvnw spring-boot:run
 ```
 
 ---
 
-## ✅ Features Planned
+## 📁 Folder Structure
 
-* [x] Spring Boot Base Project
-* [x] PostgreSQL Integration
-* [ ] User Authentication (Spring Security)
-* [ ] Module-Based Services (Inventory, HR, Finance, etc.)
-* [ ] API Documentation (Swagger/OpenAPI)
-* [ ] Docker Support
-* [ ] Frontend with React + Tailwind (Planned)
-
----
-
-##  Author
-
-**Al Araf**
-🔗 [GitHub](https://github.com/alaraf-474) | [LinkedIn](https://linkedin.com/in/alaraf474)
+```
+src
+ └── main
+     ├── java
+     │   └── com.erp
+     │       ├── controller
+     │       ├── model
+     │       ├── repository
+     │       └── service
+     └── resources
+         ├── application.properties
+```
 
 ---
 
-## 📜 License
+## 📌 Author
 
-MIT License — feel free to fork and modify.
+* **Al Araf**
+  🌐 GitHub: [@alaraf-474](https://github.com/alaraf-474)
+  🔗 LinkedIn: *\[(https://www.linkedin.com/in/rishad-araf/)]*
 
+---
 
-
-
+> ERP is modular, maintainable, and scalable — ready for production-level evolution.
